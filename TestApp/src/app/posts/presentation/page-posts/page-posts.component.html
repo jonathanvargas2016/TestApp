@@ -1,1 +1,3 @@
-<p>page-posts works!</p>
+<block-ui>
+    <app-list-posts *ngIf="posts.length > 0" [posts]="posts" [userId]="userId"></app-list-posts>
+</block-ui>
