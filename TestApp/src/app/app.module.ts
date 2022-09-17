@@ -1,20 +1,21 @@
-import {NgModule } from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {UserModule} from "./user/user.module";
-import {PostsUserModule} from "./posts/posts.module";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { UserModule } from "./user/user.module";
+import { PostsUserModule } from "./posts/posts.module";
+import { AlbumsModule } from './albums/albums.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     UserModule,
-    PostsUserModule
+    PostsUserModule,
+    AlbumsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

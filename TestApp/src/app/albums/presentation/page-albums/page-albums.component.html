@@ -1,0 +1,11 @@
+<app-list-albums *ngIf="albums.length > 0" [albums]="albums"></app-list-albums>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item" [ngClass]="{'disabled': page==1}"><a class="page-link" (click)="getAlbums(page-1)">Previous</a></li>
+        <li class="page-item"><a class="page-link" (click)="getAlbums(1)">1</a></li>
+        <li class="page-item"><a class="page-link" (click)="getAlbums(2)">2</a></li>
+        <li class="page-item"><a class="page-link" (click)="getAlbums(3)">3</a></li>
+        <li class="page-item" [ngClass]="{'disabled': page==10}"><a class="page-link" (click)="getAlbums(page+1)">Next</a></li>
+    </ul>
+</nav>
