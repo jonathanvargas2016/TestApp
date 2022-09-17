@@ -10,6 +10,17 @@
             <div class="card-body text-primary">
                 <p class="card-text">{{post.body}} </p>
             </div>
+            <div class="card-footer">
+                <!-- <button type="button" class="btn btn-primary">
+                    <i class="bi bi-eye"></i>
+                </button> -->
+                <button type="button" class="btn btn-success" (click)="showUpdateModal(post.id)">
+                    <i class="bi bi-pencil-square"></i>
+                </button>
+                <button type="button" class="btn btn-danger" (click)="deletePost(post.id)">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -17,11 +28,11 @@
 <p-dialog header="Crear post" [(visible)]="displayCreatePost" [modal]="true"
     [breakpoints]="{'1024px': '50vw', '960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
     <div class="row">
-        <form (ngSubmit)="createPost()" #formCreate="ngForm">
+        <form (ngSubmit)="createPost(formCreate)" #formCreate="ngForm">
             <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <label for="titleId" class="form-label">Título</label>
                 <input type="text" class="form-control" id="titleId" [(ngModel)]="createPostModel.title"
-                    name="titlePost" #titlePost="ngModel" minlength="5" maxlength="30" required>
+                    name="titlePost" #titlePost="ngModel" minlength="5" maxlength="100" required>
 
                 <small class="text-invalid" *ngIf="titlePost.touched && titlePost.errors?.['required']">
                     Es necesario ingresar el título.
@@ -33,7 +44,7 @@
             <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <label for="bodyId" class="form-label">Descripción</label>
                 <textarea type="text" class="form-control" id="bodyId" [(ngModel)]="createPostModel.body"
-                    name="bodyPost" #bodyPost="ngModel" minlength="10" maxlength="100" required></textarea>
+                    name="bodyPost" #bodyPost="ngModel" minlength="10" maxlength="500" required></textarea>
 
                 <small class="text-invalid" *ngIf="bodyPost.touched && bodyPost.errors?.['required']">
                     Es necesario ingresar la descripción.
@@ -44,6 +55,41 @@
 
             </div>
             <button type="submit" class="btn btn-outline-primary mt-2" [disabled]="formCreate.invalid">Guardar</button>
+        </form>
+    </div>
+</p-dialog>
+
+
+<p-dialog header="Editar post" [(visible)]="displayUpdatePost" [modal]="true"
+    [breakpoints]="{'1024px': '50vw', '960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+    <div class="row">
+        <form (ngSubmit)="updatePost(formUpdate)" #formUpdate="ngForm">
+            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <label for="titleId" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titleId" [(ngModel)]="updatePostModel.title"
+                    name="titlePostUpdate" #titlePostUpdate="ngModel" minlength="5" maxlength="100" required>
+
+                <small class="text-invalid" *ngIf="titlePostUpdate.touched && titlePostUpdate.errors?.['required']">
+                    Es necesario ingresar el título.
+                </small>
+                <small class="text-invalid" *ngIf="titlePostUpdate.errors?.['minlength']">
+                    Título inválido.
+                </small>
+            </div>
+            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <label for="bodyId" class="form-label">Descripción</label>
+                <textarea type="text" class="form-control" id="bodyId" [(ngModel)]="updatePostModel.body"
+                    name="bodyPostUpdate" #bodyPostUpdate="ngModel" minlength="10" maxlength="500" required></textarea>
+
+                <small class="text-invalid" *ngIf="bodyPostUpdate.touched && bodyPostUpdate.errors?.['required']">
+                    Es necesario ingresar la descripción.
+                </small>
+                <small class="text-invalid" *ngIf="bodyPostUpdate.errors?.['minlength']">
+                    Descripción inválido.
+                </small>
+
+            </div>
+            <button type="submit" class="btn btn-outline-primary mt-2" [disabled]="formUpdate.invalid" >Editar</button>
         </form>
     </div>
 </p-dialog>

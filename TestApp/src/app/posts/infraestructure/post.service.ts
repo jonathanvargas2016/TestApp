@@ -34,14 +34,21 @@ export class PostService extends PostRepository {
     }))
   }
 
-  getOnePost(): Observable<PostEntity> {
-    throw new Error('Method not implemented.');
+  getOnePost(postId: number): Observable<PostEntity> {
+    return this.http.get(`${this.urlBase}/posts/${postId}`).pipe(map((data: any) => {
+      return data
+    }))
   }
-  deletePost(): Observable<void> {
-    throw new Error('Method not implemented.');
+
+  deletePost(postId: number): Observable<any> {
+    return this.http.delete(`${this.urlBase}/posts/${postId}`)
   }
-  updatePost(): Observable<PostEntity> {
-    throw new Error('Method not implemented.');
+  updatePost(post: PostEntity): Observable<PostEntity> {
+    const body = JSON.stringify(post)
+    const headers = new HttpHeaders({ "Content-Type": 'application/json; charset=UTF-8' });
+    return this.http.put(`${this.urlBase}/posts/${post.id}`, body, { headers: headers }).pipe(map((data: any) => {
+      return data
+    }))
   }
 
 }
