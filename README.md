@@ -14,7 +14,7 @@ https://nodejs.org/en/
 
 ### Instalar la última versión de Angular CLI: 14.2.3
 https://angular.io/cli 
->$ npm install -g @angular/cli@latest
+> npm install -g @angular/cli@latest
 
 ## Clonar en proyecto
 https://github.com/jonathanvargas2016/TestApp
