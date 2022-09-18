@@ -27,6 +27,36 @@
       "username": "Karianne",
       "email": "Julianne.OConner@kory.org",
       "city": "South Elvis"
+    },
+    { "id": "5",
+      "name": "Bruce Chaney",
+      "username": "brucechaney",
+      "email": "eu.dolor@google.edu",
+      "city": "Canada"
+    },
+    { "id": "6",
+      "name": "Jolie Solis",
+      "username": "joliesolis",
+      "email": "magnis.dis@outlook.org",
+      "city": "Belgium"
+    },
+    { "id": "7",
+      "name": "Raphael Noble",
+      "username": "raphaelnoble",
+      "email": "purus.nullam@icloud.com",
+      "city": "Colombia"
+    },
+    { "id": "8",
+      "name": "Erich Myers",
+      "username": "erichmyers",
+      "email": "pretium.et@google.ca",
+      "city": "India"
+    },
+    { "id": "9",
+      "name": "Sandra Weaver",
+      "username": "sandraweaver",
+      "email": "donec.dignissim@yahoo.ca",
+      "city": "Pakistan"
     }
   ]
 }
