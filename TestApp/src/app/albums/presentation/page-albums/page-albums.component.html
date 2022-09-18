@@ -1,11 +1,42 @@
-<app-list-albums *ngIf="albums.length > 0" [albums]="albums"></app-list-albums>
+<div class="container">
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <li class="page-item" [ngClass]="{'disabled': page==1}"><a class="page-link" (click)="getAlbums(page-1)">Previous</a></li>
-        <li class="page-item"><a class="page-link" (click)="getAlbums(1)">1</a></li>
-        <li class="page-item"><a class="page-link" (click)="getAlbums(2)">2</a></li>
-        <li class="page-item"><a class="page-link" (click)="getAlbums(3)">3</a></li>
-        <li class="page-item" [ngClass]="{'disabled': page==10}"><a class="page-link" (click)="getAlbums(page+1)">Next</a></li>
-    </ul>
-</nav>
+    <div class="row">
+
+        <div class="col col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+            <label for="orderBy">Ordenar por: </label>
+            <select class="form-select" (change)="orderColumnsBy($event)" id="orderBy" [(ngModel)]="orderedBy.column" name="orderBy" #orderBy="ngModel" required>
+                <option value="">Seleccione</option>
+                <option value="id">Id</option>
+                <option value="title">Titulo</option>
+            </select>
+        </div>
+
+        <div class="col col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+            <label for="wayOrder">Manera: </label>
+            <select (change)="orderColumnsBy($event)" class="form-select" id="wayOrder" [(ngModel)]="orderedBy.way" name="wayBy" #wayBy="ngModel" required>
+                <option value="">Seleccione</option>
+                <option value="asc">Ascendente</option>
+                <option value="desc">Descendente</option>
+            </select>
+        </div>
+
+        <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <app-list-albums *ngIf="albums.length > 0" [albums]="albums"></app-list-albums>
+
+        </div>
+    </div>
+
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" [ngClass]="{'disabled': page==1}"><a class="page-link"
+                    (click)="getAlbums(page-1)">Previous</a></li>
+            <li class="page-item"><a class="page-link active" (click)="getAlbums(1)">1</a></li>
+            <li class="page-item"><a class="page-link active" (click)="getAlbums(2)">2</a></li>
+            <li class="page-item"><a class="page-link active" (click)="getAlbums(3)">3</a></li>
+            <li class="page-item" [ngClass]="{'disabled': page==10}"><a class="page-link"
+                    (click)="getAlbums(page+1)">Next</a></li>
+        </ul>
+    </nav>
+</div>

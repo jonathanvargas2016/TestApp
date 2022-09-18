@@ -1,5 +1,6 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { PageUserComponent } from './user/presentation/page-user/page-user.component';
 
 const routes: Routes = [
   {
@@ -9,7 +10,13 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./posts/posts-routing.module').then(p => p.PostsRoutingModule)
-  }
+  },
+  {
+    path: '',
+    loadChildren: () => import('./albums/albums-routing.module').then(a => a.AlbumsRoutingModule)
+  },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '**', component: PageUserComponent },
 ];
 
 @NgModule({

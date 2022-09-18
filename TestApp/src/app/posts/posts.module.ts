@@ -20,7 +20,7 @@ import { BlockUIModule } from 'ng-block-ui';
   ],
   imports: [
     CommonModule,
-    PostsRoutingModule,
+    // PostsRoutingModule,
     HttpClientModule,
     DialogModule,
     BrowserAnimationsModule,
