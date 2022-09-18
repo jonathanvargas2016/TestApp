@@ -1,9 +1,9 @@
 <table class="table">
-    <thead>
+    <thead class="table-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Usuario</th>
-            <th scope="col">Album</th>
+            <th scope="col" style="width:70%">Album</th>
 
         </tr>
     </thead>
@@ -12,12 +12,6 @@
             <th scope="row"> {{album.id}} </th>
             <td>{{album.userId}} </td>
             <td>{{album.title}} </td>
-            <!-- <td>
-                <button class="btn btn-success" type="button" (click)="goPostsUser(user.id)">
-                    <i class="bi bi-eye"></i>
-                </button>
-            </td> -->
-
         </tr>
     </tbody>
 </table>

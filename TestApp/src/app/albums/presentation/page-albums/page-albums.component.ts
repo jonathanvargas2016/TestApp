@@ -15,29 +15,34 @@ export class PageAlbumsComponent implements OnInit {
     column: "",
     way: ""
   }
+  searchValue = ""
   constructor(private readonly albumsService: AlbumsService) { }
 
   ngOnInit(): void {
     this.getAlbums(this.page)
   }
 
-  getAlbums(page: number){
+  getAlbums(page: number) {
     this.page = page
-    this.albumsService.getAll(page, this.orderedBy).subscribe((res)=> {
+    this.albumsService.getAll(page, this.orderedBy).subscribe((res) => {
       this.albums = res
     })
   }
 
-  orderColumnsBy(event: any){
+  orderColumnsBy(event: any) {
+    this.albumsService.getAll(this.page, this.orderedBy).subscribe((res) => {
+      this.albums = res
+    })
+  }
 
-    if(this.orderedBy.column && this.orderedBy.way){
-      console.log("colum", this.orderedBy.column)
-      console.log("way", this.orderedBy.way)
-      console.log("page", this.page)
-      
-      this.albumsService.getAll(this.page, this.orderedBy).subscribe((res) => {
+  onKey(event: any){
+    if(this.searchValue){
+      this.albumsService.getBySearch(this.searchValue).subscribe((res) => {
         this.albums = res
       })
+    }else {
+        this.getAlbums(this.page)
     }
+    
   }
 }
