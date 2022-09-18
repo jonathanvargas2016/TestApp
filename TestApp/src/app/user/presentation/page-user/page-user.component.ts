@@ -33,6 +33,8 @@ export class PageUserComponent implements OnInit {
           company: user.company.name
         }
       })
+    }, error => {
+      console.log("error", error)
     })
   }
 

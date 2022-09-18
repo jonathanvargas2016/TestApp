@@ -69,6 +69,16 @@ export class ListPostsComponent implements OnInit {
       }
       this.stopLoading()
     }, error => {
+      console.log("this. model ", this.updatePostModel)
+      this.posts = this.posts.map((post) => {
+        if (post.id === this.updatePostModel.id) {
+          post = this.updatePostModel
+        }
+        return post
+      })
+      console.log('posts after',this.posts)
+      form.reset()
+      this.displayUpdatePost = false
       this.stopLoading()
     })
   }
@@ -83,6 +93,13 @@ export class ListPostsComponent implements OnInit {
         }
         this.stopLoading()
       }, error => {
+        console.log("error actualizar", error)
+
+        const postFind = this.posts.find((post) => post.id = postId)
+        if(postFind){
+          this.updatePostModel = postFind
+          this.displayUpdatePost = true
+        }
         this.stopLoading()
       })
     }
@@ -96,6 +113,10 @@ export class ListPostsComponent implements OnInit {
             return post.id != postId
           })
         }
+      }, error => {
+        this.posts = this.posts.filter((post) => {
+          return post.id != postId
+        })
       })
     }
   }
