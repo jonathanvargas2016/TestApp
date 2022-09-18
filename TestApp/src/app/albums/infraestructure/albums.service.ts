@@ -33,6 +33,7 @@ export class AlbumsService extends AlbumRepository {
   getBySearch(search: string): Observable<[]> {
     let params = new HttpParams();
     params = params.append('title_like', search);
+    params = params.append('_limit', 10);
     return this.http.get(`${this.urlBase}/albums`, { params: params }).pipe(map((albums: any) => {
       return albums
     }))

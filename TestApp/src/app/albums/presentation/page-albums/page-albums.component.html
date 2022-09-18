@@ -41,10 +41,10 @@
         <ul class="pagination">
             <li class="page-item" [ngClass]="{'disabled': page==1}"><a class="page-link"
                     (click)="getAlbums(page-1)">Previous</a></li>
-            <li class="page-item"><a class="page-link active" (click)="getAlbums(1)">1</a></li>
-            <li class="page-item"><a class="page-link active" (click)="getAlbums(2)">2</a></li>
-            <li class="page-item"><a class="page-link active" (click)="getAlbums(3)">3</a></li>
-            <li class="page-item" [ngClass]="{'disabled': page==10}"><a class="page-link"
+            <li class="page-item"><a class="page-link" (click)="getAlbums(1)" [ngClass]="{'active': page==1}">1</a></li>
+            <li class="page-item"><a class="page-link" (click)="getAlbums(2)" [ngClass]="{'active': page==2}">2</a></li>
+            <li class="page-item"><a class="page-link" (click)="getAlbums(3)" [ngClass]="{'active': page==3}">3</a></li>
+            <li class="page-item" [ngClass]="{'disabled': page==10}"><a class="page-link" [ngClass]="{'active': page>3}"
                     (click)="getAlbums(page+1)">Next</a></li>
         </ul>
     </nav>
