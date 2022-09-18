@@ -1,3 +1,37 @@
 <div class="container">
+    <div class="row filter">
+        <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+            <label for="orderBy">Ordenar por: </label>
+            <select class="form-select" (change)="orderColumnsBy($event)" id="orderBy" [(ngModel)]="orderedBy.column"
+                name="orderBy" #orderBy="ngModel" required>
+                <option value="">Seleccione</option>
+                <option value="id">Id</option>
+                <option value="name">Nombre</option>
+                <option value="email">Email</option>
+                <option value="address.city">Ciudad</option>
+                <option value="phone">Telefono</option>
+                <option value="company.name">Empresa</option>
+            </select>
+        </div>
+        <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+            <label for="wayOrder">Manera: </label>
+            <select (change)="orderColumnsBy($event)" class="form-select" id="wayOrder" [(ngModel)]="orderedBy.way"
+                name="wayBy" #wayBy="ngModel" required>
+                <option value="">Seleccione</option>
+                <option value="asc">Ascendente</option>
+                <option value="desc">Descendente</option>
+            </select>
+
+        </div>
+        <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 search-input">
+            <form>
+                <input (keyup)="onKey($event)" type="text" class="form-control" [(ngModel)]="searchValue"
+                    name="searchValue" placeholder="Buscar">
+            </form>
+
+        </div>
+    </div>
+
+
     <app-list-user *ngIf="users.length > 0" [usersData]="users"></app-list-user>
 </div>

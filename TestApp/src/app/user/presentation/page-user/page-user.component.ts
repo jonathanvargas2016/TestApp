@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../infraestructure/user.service";
 import { UserEntity } from "../../domain/user-entity";
+import { SortColumnsEntity } from 'src/app/albums/domain/sortColums-entity';
 
 @Component({
   selector: 'app-page-user',
@@ -9,14 +10,19 @@ import { UserEntity } from "../../domain/user-entity";
 })
 export class PageUserComponent implements OnInit {
   users: UserEntity[] = []
+  orderedBy: SortColumnsEntity = {
+    column: "",
+    way: ""
+  }
+  searchValue = ""
   constructor(private readonly userService: UserService) { }
 
   ngOnInit(): void {
-    this.getUsers()
+    this.getUsers(this.orderedBy)
   }
 
-  getUsers() {
-    this.userService.getAll().subscribe((res: any) => {
+  getUsers(order: SortColumnsEntity, search?: string) {
+    this.userService.getAll(order, search).subscribe((res: any) => {
       this.users = res.map((user: any) => {
         return {
           id: user.id,
@@ -28,6 +34,15 @@ export class PageUserComponent implements OnInit {
         }
       })
     })
+  }
+
+  orderColumnsBy(event: any) {
+    this.getUsers(this.orderedBy)
+  }
+
+  onKey(event: any) {
+    this.orderedBy.way = ''
+    this.getUsers(this.orderedBy, this.searchValue)
   }
 
 }
