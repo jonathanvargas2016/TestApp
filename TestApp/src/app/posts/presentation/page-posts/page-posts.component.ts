@@ -23,14 +23,19 @@ export class PagePostsComponent implements OnInit {
       if (this.userId) {
         this.getPosts(this.userId)
       } else {
-        this.router.navigateByUrl('/home')
+        this.router.navigateByUrl('/')
       }
     })
   }
 
   getPosts(userId: number) {
     this.postService.getAllByUser(userId).subscribe((data: any) => {
-      this.posts = data
+      console.log(data)
+      if (data.length > 0) {
+        this.posts = data
+      } else {
+        this.router.navigateByUrl('/')
+      }
     })
   }
 

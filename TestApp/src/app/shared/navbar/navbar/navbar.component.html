@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active">TestApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/']" routerLinkActive="active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/albums']" routerLinkActive="active">Albums</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <a href="https://github.com/jonathanvargas2016" target="_blank">
+                <i class="bi bi-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jonathan-vargas28/" target="_blank">
+                <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://twitter.com/JonaSVargasN" target="_blank">
+                <i class="bi bi-twitter"></i>
+            </a>
+        </div>
+    </div>
+</nav>
