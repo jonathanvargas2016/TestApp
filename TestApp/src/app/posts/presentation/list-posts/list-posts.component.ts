@@ -52,7 +52,8 @@ export class ListPostsComponent implements OnInit {
   }
 
   updatePost(form: NgForm) {
-
+    const titleAux = this.updatePostModel.title
+    const bodyAux = this.updatePostModel.body
     this.showLoading()
     this.postService.updatePost(this.updatePostModel).subscribe((dataUpdate) => {
       if (dataUpdate) {
@@ -69,14 +70,17 @@ export class ListPostsComponent implements OnInit {
       }
       this.stopLoading()
     }, error => {
-      console.log("this. model ", this.updatePostModel)
       this.posts = this.posts.map((post) => {
         if (post.id === this.updatePostModel.id) {
-          post = this.updatePostModel
+          post = {
+            id: this.updatePostModel.id,
+            title: titleAux,
+            body: bodyAux,
+            userId: this.updatePostModel.userId
+          }
         }
         return post
       })
-      console.log('posts after',this.posts)
       form.reset()
       this.displayUpdatePost = false
       this.stopLoading()
@@ -96,7 +100,7 @@ export class ListPostsComponent implements OnInit {
         console.log("error actualizar", error)
 
         const postFind = this.posts.find((post) => post.id = postId)
-        if(postFind){
+        if (postFind) {
           this.updatePostModel = postFind
           this.displayUpdatePost = true
         }
@@ -108,7 +112,7 @@ export class ListPostsComponent implements OnInit {
   deletePost(postId: number | undefined) {
     if (postId) {
       this.postService.deletePost(postId).subscribe((resp) => {
-        if(resp){
+        if (resp) {
           this.posts = this.posts.filter((post) => {
             return post.id != postId
           })
