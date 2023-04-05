@@ -7,12 +7,14 @@ import { PostsUserModule } from "./posts/posts.module";
 import { AlbumsModule } from './albums/albums.module';
 import { NavbarComponent } from './shared/navbar/navbar/navbar.component';
 import { FooterComponent } from './shared/navbar/footer/footer.component';
+import { FlexboxComponent } from './components/flexbox/flexbox.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
+    FlexboxComponent,
   ],
   imports: [
     BrowserModule,
