@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexboxComponent } from './components/flexbox/flexbox.component';
 import { PageUserComponent } from './user/presentation/page-user/page-user.component';
+import { GridLayoutComponent } from './components/grid-layout/grid-layout.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   // { path: '', redirectTo: '/', pathMatch: 'full' },
   // { path: '**', component: PageUserComponent },
-  { path: 'flexbox', component: FlexboxComponent }
+  { path: 'flexbox', component: FlexboxComponent },
+  {path: 'grid-layout', component: GridLayoutComponent}
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ import { AlbumsModule } from './albums/albums.module';
 import { NavbarComponent } from './shared/navbar/navbar/navbar.component';
 import { FooterComponent } from './shared/navbar/footer/footer.component';
 import { FlexboxComponent } from './components/flexbox/flexbox.component';
+import { GridLayoutComponent } from './components/grid-layout/grid-layout.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FlexboxComponent } from './components/flexbox/flexbox.component';
     NavbarComponent,
     FooterComponent,
     FlexboxComponent,
+    GridLayoutComponent,
   ],
   imports: [
     BrowserModule,
